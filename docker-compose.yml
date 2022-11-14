@@ -1,0 +1,45 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    #volumes:
+    # - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - 25432:5432
+
+  postgres_shard_main:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    #volumes:
+    # - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - 15432:5432
+
+  postgres_shard_slave1:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    #volumes:
+    # - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - 15433:5432
+
+  postgres_shard_main_slave2:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    #volumes:
+    # - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - 15434:5432
